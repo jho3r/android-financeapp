@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_main"
+    tools:context=".MainActivity">
+
+
+
+    <LinearLayout
+        android:id="@+id/llMainHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvMainLabelAvailable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_main_label_available"
+            android:textSize="@dimen/tsize_main_labels" />
+
+        <TextView
+            android:id="@+id/tvMainAvailable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margint_main_values"
+            android:gravity="center"
+            android:text="@string/tv_main_available"
+            android:textSize="@dimen/ts_main_values"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llMainBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llMainHeader"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvMainDetails"
+            style="@style/Main.Card">
+
+            <TextView
+                style="@style/Main.CardContent"
+                android:contentDescription="@string/iv_main_details_contdescrp"
+                android:text="@string/tv_main_details"
+                app:drawableBottomCompat="@drawable/icon_list" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvMainPending"
+            style="@style/Main.Card">
+
+            <TextView
+                style="@style/Main.CardContent"
+                android:contentDescription="@string/iv_main_pending_contdescr"
+                android:text="@string/tv_main_pending"
+                app:drawableBottomCompat="@drawable/icon_warning" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/fab_main_contdescrp"
+        android:src="@drawable/icon_add" />
+
+</RelativeLayout>
