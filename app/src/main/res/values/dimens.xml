@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_main">25dp</dimen>
+    <dimen name="margin_main_container">25dp</dimen>
     <dimen name="tsize_main_labels">22sp</dimen>
     <dimen name="ts_main_values">28sp</dimen>
     <dimen name="margint_main_values">5dp</dimen>
+    <dimen name="activity_title">28sp</dimen>
+    <dimen name="marginb_sourcerow_card">10dp</dimen>
+    <dimen name="padding_sourcerow_card">20dp</dimen>
+    <dimen name="tsize_sourcerow_name">20sp</dimen>
+    <dimen name="tsize_sourcerow_value">25sp</dimen>
+    <dimen name="dpadding_sourcerow_money">5dp</dimen>
 </resources>

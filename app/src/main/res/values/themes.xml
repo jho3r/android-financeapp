@@ -33,4 +33,15 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="SourceRow.Card" parent="Theme.FinanceApp">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/marginb_sourcerow_card</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:backgroundTint">@color/card_background</item>
+        <item name="cardCornerRadius">10dp</item>
+    </style>
+
 </resources>

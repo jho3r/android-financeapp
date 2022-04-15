@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin_main"
+    android:layout_margin="@dimen/margin_main_container"
     tools:context=".MainActivity">
 
 
@@ -20,7 +20,7 @@
             android:id="@+id/tvMainLabelAvailable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tv_main_label_available"
+            android:text="@string/main_label_available"
             android:textSize="@dimen/tsize_main_labels" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margint_main_values"
             android:gravity="center"
-            android:text="@string/tv_main_available"
+            android:text="@string/main_available"
             android:textSize="@dimen/ts_main_values"
             android:textStyle="bold" />
 
@@ -48,8 +48,8 @@
 
             <TextView
                 style="@style/Main.CardContent"
-                android:contentDescription="@string/iv_main_details_contdescrp"
-                android:text="@string/tv_main_details"
+                android:contentDescription="@string/main_contdescrp_details"
+                android:text="@string/main_text_details"
                 app:drawableBottomCompat="@drawable/icon_list" />
 
         </androidx.cardview.widget.CardView>
@@ -60,8 +60,8 @@
 
             <TextView
                 style="@style/Main.CardContent"
-                android:contentDescription="@string/iv_main_pending_contdescr"
-                android:text="@string/tv_main_pending"
+                android:contentDescription="@string/main_contdescr_pending"
+                android:text="@string/main_text_pending"
                 app:drawableBottomCompat="@drawable/icon_warning" />
 
         </androidx.cardview.widget.CardView>
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:contentDescription="@string/fab_main_contdescrp"
+        android:contentDescription="@string/main_contdescrp_fab"
         android:src="@drawable/icon_add" />
 
 </RelativeLayout>

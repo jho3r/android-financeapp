@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">FinanceApp</string>
-    <string name="tv_main_label_available">Disponible en caja:</string>
-    <string name="tv_main_available">36\'000.000</string>
-    <string name="fab_main_contdescrp">Añadir transacción</string>
-    <string name="iv_main_pending_contdescr">Pendientes</string>
-    <string name="tv_main_pending">Pendientes</string>
-    <string name="iv_main_details_contdescrp">Detalles de transacciones</string>
-    <string name="tv_main_details">Ver detalle</string>
-    <string name="main_action_config">Configurar fuentes</string>
+    <string name="main_label_available">Disponible en caja:</string>
+    <string name="main_available">36\'000.000</string>
+    <string name="main_contdescrp_fab">Añadir transacción</string>
+    <string name="main_contdescr_pending">Pendientes</string>
+    <string name="main_text_pending">Pendientes</string>
+    <string name="main_contdescrp_details">Detalles de transacciones</string>
+    <string name="main_text_details">Ver detalle</string>
+    <string name="menu_action_config">Configurar fuentes</string>
+    <string name="config_text_title">Fuentes</string>
 </resources>
