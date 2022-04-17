@@ -13,9 +13,13 @@
         android:theme="@style/Theme.FinanceApp"
         tools:targetApi="31">
         <activity
+            android:name=".NewTransactionActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".ConfigActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

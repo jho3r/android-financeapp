@@ -44,4 +44,11 @@
         <item name="cardCornerRadius">10dp</item>
     </style>
 
+    <style name="NewTransaction.label" parent="Theme.FinanceApp">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/tsize_newtransc_label</item>
+        <item name="android:layout_marginTop">@dimen/margin_newtransc_label</item>
+    </style>
+
 </resources>

@@ -11,7 +11,7 @@ class ConfigActivity : AppCompatActivity() {
         setContentView(R.layout.activity_config)
 
         // change title bar
-        supportActionBar?.title = "Fuentes"
+        supportActionBar?.title = getString(R.string.config_title)
 
         val arrayString = listOf(
             mapOf("name" to "Nequi", "value" to "3'600.000"),

@@ -7,6 +7,21 @@
     <string name="main_text_pending">Pendientes</string>
     <string name="main_contdescrp_details">Detalles de transacciones</string>
     <string name="main_text_details">Ver detalle</string>
+
     <string name="menu_action_config">Configurar fuentes</string>
-    <string name="config_text_title">Fuentes</string>
+
+    <string name="config_title">Fuentes</string>
+
+    <string name="newtransc_title">Nueva Transacción</string>
+    <string name="newtransc_text_concept">Concepto:</string>
+    <string name="newtransc_text_category">Categoria:</string>
+    <string name="newtransc_text_type">Tipo:</string>
+    <string name="newtransc_text_destination">Destino:</string>
+    <string name="newtransc_text_source">Fuente:</string>
+    <string name="newtransc_contdescr_fab">Save transaction</string>
+    <string-array name="newtransc_array_type">
+        <item>Ingreso</item>
+        <item>Egreso</item>
+        <item>Transferencia</item>
+    </string-array>
 </resources>

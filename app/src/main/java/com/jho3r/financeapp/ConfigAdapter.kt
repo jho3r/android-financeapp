@@ -1,6 +1,5 @@
 package com.jho3r.financeapp
 
-import android.util.ArrayMap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

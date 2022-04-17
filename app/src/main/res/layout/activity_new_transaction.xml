@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_main_container"
+    tools:context=".NewTransactionActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/NewTransaction.label"
+                    android:layout_marginTop="0dp"
+                    android:labelFor="@id/etNewTranscConcept"
+                    android:text="@string/newtransc_text_concept" />
+
+                <EditText
+                    android:id="@+id/etNewTranscConcept"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"
+                    android:textSize="@dimen/tsize_newtransc_value" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/NewTransaction.label"
+                    android:labelFor="@id/actvNewTranscCategory"
+                    android:text="@string/newtransc_text_category" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvNewTranscCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:completionThreshold="0"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:textSize="@dimen/tsize_newtransc_value" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/NewTransaction.label"
+                    android:labelFor="@id/spNewTranscType"
+                    android:text="@string/newtransc_text_type" />
+
+                <Spinner
+                    android:id="@+id/spNewTranscType"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:textSize="@dimen/tsize_newtransc_value" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/NewTransaction.label"
+                    android:labelFor="@id/spNewTranscSource"
+                    android:text="@string/newtransc_text_source" />
+
+                <Spinner
+                    android:id="@+id/spNewTranscSource"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:textSize="@dimen/tsize_newtransc_value" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/NewTransaction.label"
+                    android:labelFor="@id/spNewTranscDestination"
+                    android:text="@string/newtransc_text_destination" />
+
+                <Spinner
+                    android:id="@+id/spNewTranscDestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:textSize="@dimen/tsize_newtransc_value" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/newtransc_contdescr_fab"
+        android:src="@drawable/icon_save" />
+
+</RelativeLayout>
