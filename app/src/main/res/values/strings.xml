@@ -19,6 +19,7 @@
     <string name="newtransc_text_destination">Destino:</string>
     <string name="newtransc_text_source">Fuente:</string>
     <string name="newtransc_contdescr_fab">Save transaction</string>
+    <string name="newtransc_text_ispending">Marcar transaccion como pendiente de resolucion</string>
     <string-array name="newtransc_array_type">
         <item>Ingreso</item>
         <item>Egreso</item>

@@ -11,5 +11,5 @@
     <dimen name="dpadding_sourcerow_money">5dp</dimen>
     <dimen name="tsize_newtransc_label">16sp</dimen>
     <dimen name="tsize_newtransc_value">20sp</dimen>
-    <dimen name="margin_newtransc_label">30dp</dimen>
+    <dimen name="margin_newtransc_div">30dp</dimen>
 </resources>

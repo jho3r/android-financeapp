@@ -3,12 +3,10 @@ package com.jho3r.financeapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 
-class NewTransactionActivity : AppCompatActivity() {
+class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_transaction)
@@ -39,9 +37,9 @@ class NewTransactionActivity : AppCompatActivity() {
         )
 
         val types = listOf<String>(
-            "Ingreso",
-            "Gasto",
             "Transferencia",
+            "Gasto",
+            "Ingreso",
         )
 
         val sources = listOf<String>(
@@ -72,10 +70,40 @@ class NewTransactionActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, data)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
+        spinner.onItemSelectedListener = this
     }
 
     fun setAdapterToAutoCompleteTextView(autoCompleteTextView: AutoCompleteTextView, data: List<String>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, data)
         autoCompleteTextView.setAdapter(adapter)
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        when (parent?.id) {
+            R.id.spNewTranscType -> {
+
+                val llSource = findViewById<LinearLayout>(R.id.llNewTranscSource)
+                val llDestination = findViewById<LinearLayout>(R.id.llNewTranscDestination)
+
+                when (position) {
+                    0 -> {
+                        llSource.visibility = View.VISIBLE
+                        llDestination.visibility = View.VISIBLE
+                    }
+                    1 -> {
+                        llSource.visibility = View.VISIBLE
+                        llDestination.visibility = View.GONE
+                    }
+                    2 -> {
+                        llSource.visibility = View.GONE
+                        llDestination.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
     }
 }

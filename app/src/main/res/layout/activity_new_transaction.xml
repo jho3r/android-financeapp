@@ -22,7 +22,6 @@
 
                 <TextView
                     style="@style/NewTransaction.label"
-                    android:layout_marginTop="0dp"
                     android:labelFor="@id/etNewTranscConcept"
                     android:text="@string/newtransc_text_concept" />
 
@@ -30,15 +29,14 @@
                     android:id="@+id/etNewTranscConcept"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
                     android:imeOptions="actionNext"
+                    android:inputType="text"
                     android:textSize="@dimen/tsize_newtransc_value" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/NewTransaction.div"
                 android:orientation="vertical">
 
                 <TextView
@@ -51,16 +49,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:completionThreshold="0"
+                    android:imeOptions="actionDone"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:imeOptions="actionDone"
                     android:textSize="@dimen/tsize_newtransc_value" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/NewTransaction.div"
                 android:orientation="vertical">
 
                 <TextView
@@ -77,8 +74,8 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/llNewTranscSource"
+                style="@style/NewTransaction.div"
                 android:orientation="vertical">
 
                 <TextView
@@ -95,8 +92,8 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/llNewTranscDestination"
+                style="@style/NewTransaction.div"
                 android:orientation="vertical">
 
                 <TextView
@@ -109,6 +106,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:textSize="@dimen/tsize_newtransc_value" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/NewTransaction.div"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cbNewTranscIsPending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/NewTransaction.label"
+                    android:labelFor="@id/cbNewTranscIsPending"
+                    android:text="@string/newtransc_text_ispending" />
 
             </LinearLayout>
 
