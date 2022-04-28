@@ -13,14 +13,25 @@
         android:theme="@style/Theme.FinanceApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.SignupActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".ui.activity.DashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.NewTransactionActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ui.activity.DashboardActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.ConfigActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ui.activity.DashboardActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
