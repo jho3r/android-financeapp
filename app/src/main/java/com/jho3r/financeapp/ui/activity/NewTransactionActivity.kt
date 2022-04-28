@@ -1,9 +1,10 @@
-package com.jho3r.financeapp
+package com.jho3r.financeapp.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import com.jho3r.financeapp.R
 
 class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 

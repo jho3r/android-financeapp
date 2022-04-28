@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin_main_container"
-    tools:context=".NewTransactionActivity">
+    tools:context=".ui.activity.NewTransactionActivity">
 
     <ScrollView
         android:layout_width="match_parent"

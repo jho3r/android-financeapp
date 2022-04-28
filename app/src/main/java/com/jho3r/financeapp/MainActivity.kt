@@ -8,6 +8,8 @@ import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.jho3r.financeapp.ui.activity.ConfigActivity
+import com.jho3r.financeapp.ui.activity.NewTransactionActivity
 
 class MainActivity : AppCompatActivity(), OnClickListener {
 

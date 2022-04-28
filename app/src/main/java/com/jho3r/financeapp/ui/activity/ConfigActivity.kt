@@ -1,9 +1,11 @@
-package com.jho3r.financeapp
+package com.jho3r.financeapp.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jho3r.financeapp.ConfigAdapter
+import com.jho3r.financeapp.R
 
 class ConfigActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
