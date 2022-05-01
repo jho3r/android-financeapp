@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin_main_container"
+    android:padding="@dimen/margin_main_container"
     tools:context=".ui.activity.NewTransactionActivity">
 
     <ScrollView
@@ -31,6 +31,26 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="text"
+                    android:textSize="@dimen/tsize_newtransc_value" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/NewTransaction.label"
+                    android:labelFor="@id/etNewTranscConcept"
+                    android:text="@string/newtransc_text_amount" />
+
+                <EditText
+                    android:id="@+id/etNewTranscAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/tsize_newtransc_value" />
 
             </LinearLayout>
@@ -132,6 +152,7 @@
     </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabNewTransc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

@@ -12,6 +12,7 @@ class User(
             balance = "0.00",
             currency = "COP",
             cash = true,
+            description = "Cash account",
         ),
         "savings" to Account(
             id = "savings",
@@ -19,6 +20,7 @@ class User(
             balance = "0.00",
             currency = "COP",
             cash = true,
+            description = "Savings under the pillow account",
         ),
     ),
     private var categories: MutableList<String> = mutableListOf(
@@ -30,6 +32,9 @@ class User(
     ),
     private var dateCreated: Timestamp = Timestamp.now(),
 ) {
+
+    constructor() : this("", "")
+
     fun getData(): Map<String, Any> {
         return mapOf(
             "id" to id,
@@ -40,5 +45,8 @@ class User(
     }
     fun getAccounts(): Map<String, Account> {
         return accounts
+    }
+    fun getCategories(): MutableList<String> {
+        return categories
     }
 }

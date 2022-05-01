@@ -3,18 +3,13 @@ package com.jho3r.financeapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.jho3r.financeapp.ui.activity.ConfigActivity
 import com.jho3r.financeapp.ui.activity.LoginActivity
-import com.jho3r.financeapp.ui.activity.NewTransactionActivity
 import com.jho3r.financeapp.ui.activity.SignupActivity
 
 class MainActivity : AppCompatActivity(), OnClickListener {

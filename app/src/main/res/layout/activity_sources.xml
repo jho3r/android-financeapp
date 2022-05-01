@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin_main_container"
+    android:padding="@dimen/margin_main_container"
     android:orientation="vertical"
-    tools:context=".ui.activity.ConfigActivity">
+    tools:context=".ui.activity.SourcesActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvConfigSources"
+        android:id="@+id/rvSources"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:itemCount="5"

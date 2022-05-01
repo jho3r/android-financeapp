@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin_main_container"
+    android:padding="@dimen/margin_main_container"
     tools:context=".ui.activity.DashboardActivity">
 
 
@@ -16,7 +16,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvDashboardLabelAvailable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/main_label_available"
@@ -28,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margint_main_values"
             android:gravity="center"
-            android:text="@string/main_available"
+            tools:text="@string/main_available"
             android:textSize="@dimen/ts_main_values"
             android:textStyle="bold" />
 

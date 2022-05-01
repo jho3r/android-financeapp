@@ -6,5 +6,7 @@ class Account(
     val balance: String,
     val currency: String,
     val cash: Boolean,
+    val description : String
 ) {
+    constructor() : this("", "", "", "", false, "")
 }

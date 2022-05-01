@@ -9,6 +9,7 @@ import android.view.View.OnClickListener
 import android.widget.Button
 import android.widget.EditText
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout.TabGravity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -21,10 +22,9 @@ import com.jho3r.financeapp.network.Callback
 import com.jho3r.financeapp.network.FirestoreService
 
 private const val USERID_KEY = "userId"
+private const val TAG = "MyApp.Signup"
 
 class SignupActivity : AppCompatActivity(), OnClickListener {
-
-    private val tag = "MyApp.Signup"
 
     private lateinit var btnSignup: Button
     private lateinit var etSignupEmail: EditText
@@ -38,6 +38,8 @@ class SignupActivity : AppCompatActivity(), OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+
+        supportActionBar?.title = getString(R.string.signup_title)
 
         etSignupEmail = findViewById(R.id.etSignupEmail)
         etSignupPassword = findViewById(R.id.etSignupPassword)
@@ -70,7 +72,7 @@ class SignupActivity : AppCompatActivity(), OnClickListener {
             password = password,
             callback = object : Callback<FirebaseUser>{
                 override fun onSuccess(response: FirebaseUser?) {
-                    Log.d(tag, "Successfully registered user ${response?.uid}")
+                    Log.d(TAG, "Successfully registered user ${response?.uid}")
                     if (response != null) {
                         val user = User(
                             id = response.uid,
@@ -78,12 +80,12 @@ class SignupActivity : AppCompatActivity(), OnClickListener {
                         )
                         firestoreService.createUser(user, callback = object : Callback<Void>{
                             override fun onSuccess(response: Void?) {
-                                Log.d(tag, "Successfully created user ${user.id}")
+                                Log.d(TAG, "Successfully created user ${user.id}")
                                 startDashboardActivity(user.id)
                             }
 
                             override fun onFailure(error: Exception) {
-                                Log.e(tag, "Error creating user ${user.id} ${error.message}")
+                                Log.e(TAG, "Error creating user ${user.id} ${error.message}")
                                 showErrorMessage(view, error.message ?: "Error creating user")
                             }
                         })
@@ -91,7 +93,7 @@ class SignupActivity : AppCompatActivity(), OnClickListener {
                 }
 
                 override fun onFailure(exception: Exception) {
-                    Log.e(tag, "Error: ${exception.message}")
+                    Log.e(TAG, "Error: ${exception.message}")
                     showErrorMessage(view, exception.message ?: "Error conectando con el servidor")
                 }
             }
@@ -102,6 +104,7 @@ class SignupActivity : AppCompatActivity(), OnClickListener {
         val intent = Intent(this, DashboardActivity::class.java)
         intent.putExtra(USERID_KEY, userId)
         startActivity(intent)
+        finishAffinity()
     }
 
     private fun showErrorMessage(view: View, message: String) {

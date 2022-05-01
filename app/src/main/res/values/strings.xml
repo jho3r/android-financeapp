@@ -14,15 +14,24 @@
 
     <string name="newtransc_title">Nueva Transacción</string>
     <string name="newtransc_text_concept">Concepto:</string>
+    <string name="newtransc_text_amount">Monto:</string>
     <string name="newtransc_text_category">Categoria:</string>
     <string name="newtransc_text_type">Tipo:</string>
     <string name="newtransc_text_destination">Destino:</string>
     <string name="newtransc_text_source">Fuente:</string>
     <string name="newtransc_contdescr_fab">Save transaction</string>
     <string name="newtransc_text_ispending">Marcar transaccion como pendiente de resolucion</string>
+
+    <string name="dashboard_text_cash">$ %1$s</string>
+
+    <string name="login_title">Inicia Sesion</string>
+
+    <string name="signup_title">Registrate</string>
+
     <string-array name="newtransc_array_type">
-        <item>Ingreso</item>
-        <item>Egreso</item>
         <item>Transferencia</item>
+        <item>Gasto</item>
+        <item>Ingreso</item>
     </string-array>
+
 </resources>
