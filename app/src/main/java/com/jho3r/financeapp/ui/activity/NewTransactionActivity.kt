@@ -34,6 +34,7 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
 
     private lateinit var userId: String
     private lateinit var type : String
+    private lateinit var categories : MutableList<String>
 
     private lateinit var firestoreService: FirestoreService
     private lateinit var messagesHandler: UserMessagesHandler
@@ -80,7 +81,7 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
                 override fun onSuccess(response: User?) {
                     if (response != null) {
                         val user = response
-                        val categories = user.getCategories()
+                        categories = user.getCategories()
                         setAdapterToAutoCompleteTextView(actvCategories, categories)
                     }
                 }
@@ -184,6 +185,21 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
         if (categoryTrimmed.isEmpty()) {
             messagesHandler.showToastErrorMessage("La categoría no puede estar vacía")
             return
+        }
+
+        if (!categories.contains(category)) {
+            categories.add(category)
+            firestoreService.updateField("categories", categories, userId,
+            callback = object : Callback<Void>{
+                override fun onSuccess(response: Void?) {
+                    Log.d(TAG, "Categories updated")
+                }
+
+                override fun onFailure(exception: Exception) {
+                    Log.e(TAG, "Error updating categories", exception)
+                }
+
+            })
         }
 
         val source = if (type == Constants.TRANSACTION_TYPE_TRANSFER || type == Constants.TRANSACTION_TYPE_EXPENSE) {

@@ -111,5 +111,18 @@ class FirestoreService(private val firebaseFirestore: FirebaseFirestore) {
             }
     }
 
+    fun updateField(field: String, value: Any, userId: String, callback: Callback<Void>) {
+        firebaseFirestore
+            .collection(USERS_COLLECTION)
+            .document(userId)
+            .update(field, value)
+            .addOnSuccessListener {
+                callback.onSuccess(null)
+            }
+            .addOnFailureListener {
+                callback.onFailure(it)
+            }
+    }
+
 
 }
