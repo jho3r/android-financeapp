@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.AddSourceActivity">
+
+    <LinearLayout
+        android:id="@+id/llAddSource1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@id/glAddSourceEnd"
+        app:layout_constraintStart_toStartOf="@id/glAddSourceStart"
+        app:layout_constraintTop_toTopOf="@id/glAddSourceTop">
+
+        <TextView
+            android:id="@+id/tvAddSourceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Nombre:" />
+
+        <EditText
+            android:id="@+id/etAddSourceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Bancolombia"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llAddSource2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@id/glAddSourceEnd"
+        app:layout_constraintStart_toStartOf="@id/glAddSourceStart"
+        app:layout_constraintTop_toBottomOf="@id/llAddSource1">
+
+        <TextView
+            android:id="@+id/tvAddSourceBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Balance:" />
+
+        <EditText
+            android:id="@+id/etAddSourceBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="1000000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llAddSource3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@id/glAddSourceEnd"
+        app:layout_constraintStart_toStartOf="@id/glAddSourceStart"
+        app:layout_constraintTop_toBottomOf="@id/llAddSource2">
+
+        <TextView
+            android:id="@+id/tvAddSourceDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Descripcion:" />
+
+        <EditText
+            android:id="@+id/etAddSourceDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cuenta de nomina"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llAddSource4"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@id/glAddSourceEnd"
+        app:layout_constraintStart_toStartOf="@id/glAddSourceStart"
+        app:layout_constraintTop_toBottomOf="@id/llAddSource3">
+
+
+    <CheckBox
+            android:id="@+id/cbAddSourceCash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/NewTransaction.label"
+            android:labelFor="@id/cbNewTranscIsPending"
+            android:text="Dinero facilmente convertible en efectivo" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddSourceSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_save"
+        app:layout_constraintBottom_toBottomOf="@id/glAddSourceBottom"
+        app:layout_constraintEnd_toStartOf="@id/glAddSourceEnd"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glAddSourceStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glAddSourceEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glAddSourceTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glAddSourceBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

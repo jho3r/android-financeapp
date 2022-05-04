@@ -26,8 +26,8 @@ class SourcesAdapter(private val dataSet: List<Account>) : RecyclerView.Adapter<
         private val valueSource: TextView = itemView.findViewById(R.id.tvSourceRowValue)
 
         fun bind(item: Account) {
-            nameSource.text = item.name
-            valueSource.text = item.balance
+            nameSource.text = item.getName()
+            valueSource.text = item.getBalance()
         }
     }
 }

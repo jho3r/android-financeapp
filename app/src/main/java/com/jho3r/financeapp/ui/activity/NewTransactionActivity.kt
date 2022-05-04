@@ -1,5 +1,6 @@
 package com.jho3r.financeapp.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -88,7 +89,7 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
 
                 override fun onFailure(exception: Exception) {
                     Log.e(TAG, "Error al cargar datos usuario", exception)
-                    messagesHandler.showToastErrorMessage("Error al obtener datos de usuario")
+                    messagesHandler.showToastErrorMessage("Error al obtener datos de usuario", null)
                 }
 
             }
@@ -98,7 +99,7 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
             callback = object : Callback<Map<String,Account>>{
                 override fun onSuccess(response: Map<String,Account>?) {
                     if (response != null) {
-                        val sources : List<String> = response.values.map { it.name }
+                        val sources : List<String> = response.values.map { it.getName() }
                         setAdaptersToSpinner(spinnerSources, sources)
                         setAdaptersToSpinner(spinnerDestinations, sources)
                     }
@@ -106,7 +107,7 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
 
                 override fun onFailure(exception: Exception) {
                     Log.e(TAG, "Error al cargar cuentas usuario", exception)
-                    messagesHandler.showToastErrorMessage("Error al obtener cuentas de usuario")
+                    messagesHandler.showToastErrorMessage("Error al obtener cuentas de usuario", null)
                 }
 
             }
@@ -160,15 +161,16 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
 
     override fun onClick(p0: View?) {
         when(p0?.id) {
-            R.id.fabNewTransc -> tryAddNewTransaction()
+            R.id.fabNewTransc -> tryAddNewTransaction(p0)
         }
     }
 
-    private fun tryAddNewTransaction() {
+    private fun tryAddNewTransaction(view: View) {
+        view.isEnabled = false
         val concept = etConcept.text.toString()
         val conceptTrimmed = concept.trim()
         if (conceptTrimmed.isEmpty()) {
-            messagesHandler.showToastErrorMessage("El concepto no puede estar vacío")
+            messagesHandler.showToastErrorMessage("El concepto no puede estar vacío", view)
             return
         }
 
@@ -176,14 +178,14 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
         // remove white spaces
         val amountTrimmed = amount.trim()
         if (amountTrimmed.isEmpty()) {
-            messagesHandler.showToastErrorMessage("El monto no puede estar vacío")
+            messagesHandler.showToastErrorMessage("El monto no puede estar vacío", view)
             return
         }
 
         val category = actvCategories.text.toString()
         val categoryTrimmed = category.trim()
         if (categoryTrimmed.isEmpty()) {
-            messagesHandler.showToastErrorMessage("La categoría no puede estar vacía")
+            messagesHandler.showToastErrorMessage("La categoría no puede estar vacía", view)
             return
         }
 
@@ -203,13 +205,13 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
         }
 
         val source = if (type == Constants.TRANSACTION_TYPE_TRANSFER || type == Constants.TRANSACTION_TYPE_EXPENSE) {
-            spinnerSources.selectedItem.toString().lowercase()
+            spinnerSources.selectedItem.toString()
         } else {
             null
         }
 
         val destination = if (type == Constants.TRANSACTION_TYPE_TRANSFER || type == Constants.TRANSACTION_TYPE_INCOME) {
-            spinnerDestinations.selectedItem.toString().lowercase()
+            spinnerDestinations.selectedItem.toString()
         } else {
             null
         }
@@ -224,7 +226,7 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
         }
 
         if (error != null) {
-            messagesHandler.showToastErrorMessage(error.message ?: "Error al realizar la transacción")
+            messagesHandler.showToastErrorMessage(error.message ?: "Error al realizar la transacción", view)
             return
         }
 
@@ -243,13 +245,16 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
             transaction = transaction,
             callback = object : Callback<Void>{
                 override fun onSuccess(response: Void?) {
+                    view.isEnabled = true
                     messagesHandler.showToastSuccessMessage("Transacción agregada")
+                    val intent = Intent()
+                    setResult(Constants.RESULT_DATABASE_CHANGED, intent)
                     finish()
                 }
 
                 override fun onFailure(exception: Exception) {
                     Log.e(TAG, "Error adding transaction", exception)
-                    messagesHandler.showToastErrorMessage("Error al agregar la transacción")
+                    messagesHandler.showToastErrorMessage("Error al agregar la transacción", view)
                 }
 
             }
@@ -275,10 +280,11 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
             return Exception("Debe seleccionar una cuenta de origen")
         }
         var error : Exception? = null
+        val sourceId = source.lowercase().replace(" ", "-")
         firestoreService.updateBalance(
             amount = amount.toDouble() * -1,
             userId = userId,
-            accountId = source,
+            accountId = sourceId,
             callback = object : Callback<Void>{
                 override fun onSuccess(response: Void?) {
                     Log.d(TAG, "Expense updated")
@@ -299,10 +305,11 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
             return Exception("Debe seleccionar una cuenta de destino")
         }
         var error : Exception? = null
+        val destinationId = destination.lowercase().replace(" ", "-")
         firestoreService.updateBalance(
             amount = amount.toDouble(),
             userId = userId,
-            accountId = destination,
+            accountId = destinationId,
             callback = object : Callback<Void>{
                 override fun onSuccess(response: Void?) {
                     Log.d(TAG, "Income updated")

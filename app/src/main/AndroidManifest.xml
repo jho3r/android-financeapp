@@ -13,17 +13,21 @@
         android:theme="@style/Theme.FinanceApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.AddSourceActivity"
+            android:parentActivityName=".ui.activity.SourcesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.SignupActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.activity.LoginActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.activity.DashboardActivity"
-            android:launchMode="singleTop"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTop" />
         <activity
             android:name=".ui.activity.NewTransactionActivity"
             android:exported="false"

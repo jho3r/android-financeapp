@@ -11,7 +11,10 @@ class UserMessagesHandler(private val context: Context) {
         Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
     }
 
-    fun showToastErrorMessage(message: String) {
+    fun showToastErrorMessage(message: String, view: View?) {
+        if (view != null) {
+            view.isEnabled = true
+        }
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 

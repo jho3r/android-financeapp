@@ -10,6 +10,7 @@ import com.jho3r.financeapp.utils.Constants
 private const val USERS_COLLECTION = "users"
 private const val ACCOUNTS_COLLECTION = "accounts"
 private const val TRANSACTIONS_COLLECTION = "transactions"
+private const val HIDDEN_TRANSACTIONS_COLLECTION = "hidden-transactions"
 private const val TAG = "MyApp.FirestoreServ"
 
 class FirestoreService(private val firebaseFirestore: FirebaseFirestore) {
@@ -79,7 +80,7 @@ class FirestoreService(private val firebaseFirestore: FirebaseFirestore) {
             .addOnSuccessListener { document ->
                 val account = document.toObject(Account::class.java)
                 account?.let {
-                    val newBalance = (it.balance.toDouble() + amount).toString()
+                    val newBalance = (it.getBalance().toDouble() + amount).toString()
                     firebaseFirestore
                         .collection(USERS_COLLECTION)
                         .document(userId)
@@ -124,5 +125,38 @@ class FirestoreService(private val firebaseFirestore: FirebaseFirestore) {
             }
     }
 
+    fun addAccount(userId: String, account: Account, callback: Callback<Void>) {
+        firebaseFirestore
+            .collection(USERS_COLLECTION)
+            .document(userId)
+            .collection(ACCOUNTS_COLLECTION)
+            .document(account.getId())
+            .set(account.getData())
+            .addOnSuccessListener {
+                addSourceTransaction(
+                    userId = userId,
+                    account = account
+                )
+                callback.onSuccess(null)
+            }
+            .addOnFailureListener {
+                callback.onFailure(it)
+            }
+    }
+
+    private fun addSourceTransaction(userId: String, account: Account) {
+        val transaction = Transaction(
+            userId = userId,
+            concept = "Add account: ${account.getName()}",
+            category = "Add account",
+            type = Constants.TRANSACTION_TYPE_INCOME,
+            amount = account.getBalance().toDouble(),
+            destination = account.getName(),
+        )
+        Log.d(TAG, "addSourceTransaction: $transaction")
+        firebaseFirestore
+            .collection(HIDDEN_TRANSACTIONS_COLLECTION)
+            .add(transaction.getData())
+    }
 
 }

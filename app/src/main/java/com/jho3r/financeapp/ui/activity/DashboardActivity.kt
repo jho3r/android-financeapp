@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -15,6 +16,7 @@ import com.jho3r.financeapp.R
 import com.jho3r.financeapp.models.Account
 import com.jho3r.financeapp.network.Callback
 import com.jho3r.financeapp.network.FirestoreService
+import com.jho3r.financeapp.utils.Constants
 import com.jho3r.financeapp.utils.UserMessagesHandler
 
 private const val USERID_KEY = "userId"
@@ -58,27 +60,27 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                             var available : Double = 0.0
                             for (account in response.values) {
                                 if (account.cash) {
-                                    available += account.balance.toDouble()
+                                    available += account.getBalance().toDouble()
                                 }
                             }
                             Log.d(TAG, "Available: $available")
                             tvDashboardAvailable.text = getString(R.string.dashboard_text_cash, available.toString())
                         } else {
                             messagesHandler
-                                .showToastErrorMessage("Error obteniendo datos de usuario")
+                                .showToastErrorMessage("Error obteniendo datos de usuario", null)
                         }
                     }
 
                     override fun onFailure(exception: Exception) {
                         messagesHandler
-                            .showToastErrorMessage(exception.message?:"Error obteniendo datos de usuario")
+                            .showToastErrorMessage(exception.message?:"Error obteniendo datos de usuario", null)
                     }
 
                 }
             )
         } else {
             messagesHandler
-                .showToastErrorMessage("Error obteniendo datos de usuario porfavor reinicie la aplicación")
+                .showToastErrorMessage("Error obteniendo datos de usuario porfavor reinicie la aplicación", null)
         }
     }
 
@@ -99,13 +101,20 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     private fun startSourcesActivity() {
         val intent = Intent(this, SourcesActivity::class.java)
         intent.putExtra(USERID_KEY, userId)
-        startActivity(intent)
+        resultLauncher.launch(intent)
     }
 
     private fun startNewTransactionActivity() {
         val intent = Intent(this, NewTransactionActivity::class.java)
         intent.putExtra(USERID_KEY, userId)
-        startActivity(intent)
+        resultLauncher.launch(intent)
+    }
+
+    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        Log.d(TAG, "Result: $result")
+        if (result.resultCode == Constants.RESULT_DATABASE_CHANGED) {
+            tryGetData()
+        }
     }
 
     override fun onClick(v: View) {
@@ -114,11 +123,6 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                 startNewTransactionActivity()
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        tryGetData()
     }
 
 }

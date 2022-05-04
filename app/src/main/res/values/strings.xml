@@ -12,6 +12,8 @@
 
     <string name="config_title">Fuentes</string>
 
+    <string name="addsource_title">Nueva Fuente</string>
+
     <string name="newtransc_title">Nueva Transacción</string>
     <string name="newtransc_text_concept">Concepto:</string>
     <string name="newtransc_text_amount">Monto:</string>
