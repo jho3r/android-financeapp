@@ -59,7 +59,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                         if (response != null) {
                             var available : Double = 0.0
                             for (account in response.values) {
-                                if (account.cash) {
+                                if (account.isCash()) {
                                     available += account.getBalance().toDouble()
                                 }
                             }

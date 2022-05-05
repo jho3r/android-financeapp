@@ -26,7 +26,9 @@
             android:id="@+id/etAddSourceName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Bancolombia"/>
+            android:hint="Bancolombia"
+            android:inputType="text"
+            android:imeOptions="actionNext"/>
 
     </LinearLayout>
 
@@ -50,7 +52,9 @@
             android:id="@+id/etAddSourceBalance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="1000000"/>
+            android:hint="1000000"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionNext"/>
 
     </LinearLayout>
 
@@ -74,7 +78,9 @@
             android:id="@+id/etAddSourceDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Cuenta de nomina"/>
+            android:hint="Cuenta de nomina"
+            android:inputType="text"
+            android:imeOptions="actionDone"/>
 
     </LinearLayout>
 

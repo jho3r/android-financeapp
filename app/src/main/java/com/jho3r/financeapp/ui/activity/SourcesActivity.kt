@@ -1,7 +1,5 @@
 package com.jho3r.financeapp.ui.activity
 
-import android.app.Activity
-import android.app.TaskStackBuilder
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +18,7 @@ import com.jho3r.financeapp.R
 import com.jho3r.financeapp.models.Account
 import com.jho3r.financeapp.network.Callback
 import com.jho3r.financeapp.network.FirestoreService
+import com.jho3r.financeapp.ui.fragment.ModifyAccountFragment
 import com.jho3r.financeapp.utils.Constants
 import com.jho3r.financeapp.utils.UserMessagesHandler
 
@@ -57,6 +56,7 @@ class SourcesActivity : AppCompatActivity(), OnClickListener {
         rvSources.layoutManager = LinearLayoutManager(this)
 
         tryGetData()
+
     }
 
     private fun tryGetData() {
@@ -70,7 +70,7 @@ class SourcesActivity : AppCompatActivity(), OnClickListener {
                             response.values.forEach {
                                 listSources.add(it)
                             }
-                            rvSources.adapter = SourcesAdapter(listSources)
+                            rvSources.adapter = SourcesAdapter(listSources, ::onAccountClick)
                         } else {
                             messagesHandler
                                 .showToastErrorMessage("Error obteniendo datos de usuario", null)
@@ -120,6 +120,12 @@ class SourcesActivity : AppCompatActivity(), OnClickListener {
             true
         }
         else -> super.onOptionsItemSelected(item)
+    }
+
+    fun onAccountClick(account: Account) {
+        val fm = supportFragmentManager
+        val dialog = ModifyAccountFragment(account)
+        dialog.show(fm, "fragment_edit_name")
     }
 
 }

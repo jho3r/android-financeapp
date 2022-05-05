@@ -5,8 +5,8 @@ class Account(
     private val name: String,
     private val balance: String,
     val currency: String = "COP",
-    val cash: Boolean,
-    val description : String
+    private val cash: Boolean,
+    private val description : String
 ) {
     constructor() : this("", "", "", "", false, "")
     fun getData() : Map<String, Any> {
@@ -30,6 +30,14 @@ class Account(
 
     fun getBalance() : String {
         return balance
+    }
+
+    fun getDescription() : String {
+        return description
+    }
+
+    fun isCash() : Boolean {
+        return cash
     }
 
 }
