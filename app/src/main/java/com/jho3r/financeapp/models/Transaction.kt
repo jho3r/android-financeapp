@@ -24,6 +24,10 @@ class Transaction(
         return type
     }
 
+    fun getPending(): Boolean {
+        return isPending
+    }
+
     fun getData(): Map<String, Any?> {
         return mapOf(
             "userId" to userId,

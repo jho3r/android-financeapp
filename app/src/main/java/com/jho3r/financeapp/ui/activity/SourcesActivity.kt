@@ -124,8 +124,28 @@ class SourcesActivity : AppCompatActivity(), OnClickListener {
 
     fun onAccountClick(account: Account) {
         val fm = supportFragmentManager
-        val dialog = ModifyAccountFragment(account)
+        val dialog = ModifyAccountFragment(account, ::onDialogPositiveClick)
         dialog.show(fm, "fragment_edit_name")
+    }
+
+    fun onDialogPositiveClick(account: Account) {
+        firestoreService.updateAccount(
+            userId = userId,
+            account = account,
+            callback = object : Callback<Void> {
+                override fun onSuccess(response: Void?) {
+                    messagesHandler
+                        .showToastSuccessMessage("Cuenta actualizada")
+                }
+
+                override fun onFailure(exception: Exception) {
+                    messagesHandler
+                        .showToastErrorMessage(exception.message?:"Error actualizando cuenta", null)
+                }
+
+
+            }
+        )
     }
 
 }

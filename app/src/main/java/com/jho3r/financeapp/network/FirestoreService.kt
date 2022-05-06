@@ -6,10 +6,12 @@ import com.jho3r.financeapp.models.Account
 import com.jho3r.financeapp.models.Transaction
 import com.jho3r.financeapp.models.User
 import com.jho3r.financeapp.utils.Constants
+import kotlin.math.absoluteValue
 
 private const val USERS_COLLECTION = "users"
 private const val ACCOUNTS_COLLECTION = "accounts"
 private const val TRANSACTIONS_COLLECTION = "transactions"
+private const val PENDING_TRANSACTIONS_COLLECTION = "pending-transactions"
 private const val HIDDEN_TRANSACTIONS_COLLECTION = "hidden-transactions"
 private const val TAG = "MyApp.FirestoreServ"
 
@@ -105,7 +107,16 @@ class FirestoreService(private val firebaseFirestore: FirebaseFirestore) {
             .collection(TRANSACTIONS_COLLECTION)
             .add(transaction.getData())
             .addOnSuccessListener {
-                callback.onSuccess(null)
+                if (transaction.getPending()) {
+                    firebaseFirestore
+                        .collection(PENDING_TRANSACTIONS_COLLECTION)
+                        .add(transaction.getData())
+                        .addOnSuccessListener {
+                            callback.onSuccess(null)
+                        }
+                } else {
+                    callback.onSuccess(null)
+                }
             }
             .addOnFailureListener {
                 callback.onFailure(it)
@@ -135,7 +146,8 @@ class FirestoreService(private val firebaseFirestore: FirebaseFirestore) {
             .addOnSuccessListener {
                 addSourceTransaction(
                     userId = userId,
-                    account = account
+                    account = account,
+                    difference = account.getBalance().toDouble()
                 )
                 callback.onSuccess(null)
             }
@@ -144,19 +156,83 @@ class FirestoreService(private val firebaseFirestore: FirebaseFirestore) {
             }
     }
 
-    private fun addSourceTransaction(userId: String, account: Account) {
-        val transaction = Transaction(
-            userId = userId,
-            concept = "Add account: ${account.getName()}",
-            category = "Add account",
-            type = Constants.TRANSACTION_TYPE_INCOME,
-            amount = account.getBalance().toDouble(),
-            destination = account.getName(),
-        )
-        Log.d(TAG, "addSourceTransaction: $transaction")
+    fun updateAccount(userId: String, account: Account, callback: Callback<Void>) {
         firebaseFirestore
-            .collection(HIDDEN_TRANSACTIONS_COLLECTION)
-            .add(transaction.getData())
+            .collection(USERS_COLLECTION)
+            .document(userId)
+            .collection(ACCOUNTS_COLLECTION)
+            .document(account.getId())
+            .get()
+            .addOnSuccessListener {
+                val accountData = it.toObject(Account::class.java)
+                if (accountData != null) {
+                    val lastBalance = accountData.getBalance().toDouble()
+                    val newBalance = account.getBalance().toDouble()
+                    val difference = newBalance - lastBalance
+                    firebaseFirestore
+                        .collection(USERS_COLLECTION)
+                        .document(userId)
+                        .collection(ACCOUNTS_COLLECTION)
+                        .document(account.getId())
+                        .update(
+                            "balance", account.getBalance(),
+                            "description", account.getDescription(),
+                            "cash", account.isCash()
+                        )
+                        .addOnSuccessListener {
+                            addSourceTransaction(
+                                userId = userId,
+                                account = account,
+                                difference = difference
+                            )
+                            callback.onSuccess(null)
+                        }
+                        .addOnFailureListener {
+                            callback.onFailure(it)
+                        }
+                }
+            }
+            .addOnFailureListener {
+                callback.onFailure(it)
+            }
+
+    }
+
+    private fun addSourceTransaction(userId: String, account: Account, difference: Double = 0.0) {
+        val type = if (difference > 0) {
+            Constants.TRANSACTION_TYPE_INCOME
+        } else {
+            Constants.TRANSACTION_TYPE_EXPENSE
+        }
+
+        val destination = if (difference > 0) {
+            account.getId()
+        } else {
+            null
+        }
+
+        val source = if (difference > 0) {
+            null
+        } else {
+            account.getId()
+        }
+
+        if (account.getBalance().toDouble() > 0 && difference.toInt() != 0) {
+            val transaction = Transaction(
+                userId = userId,
+                concept = "Modify account: ${account.getName()}",
+                category = "Modify account",
+                type = type,
+                amount = difference.absoluteValue,
+                destination = destination,
+                source = source,
+            )
+            Log.d(TAG, "addSourceTransaction: $transaction")
+            firebaseFirestore
+                .collection(HIDDEN_TRANSACTIONS_COLLECTION)
+                .add(transaction.getData())
+        }
+
     }
 
 }

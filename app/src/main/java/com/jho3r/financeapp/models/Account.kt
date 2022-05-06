@@ -1,12 +1,12 @@
 package com.jho3r.financeapp.models
 
 class Account(
-    private val id: String,
-    private val name: String,
-    private val balance: String,
-    val currency: String = "COP",
-    private val cash: Boolean,
-    private val description : String
+    private var id: String,
+    private var name: String,
+    private var balance: String,
+    var currency: String = "COP",
+    private var cash: Boolean,
+    private var description : String
 ) {
     constructor() : this("", "", "", "", false, "")
     fun getData() : Map<String, Any> {
@@ -38,6 +38,18 @@ class Account(
 
     fun isCash() : Boolean {
         return cash
+    }
+
+    fun setBalance(balance: String) {
+        this.balance = balance
+    }
+
+    fun setDescription(description: String) {
+        this.description = description
+    }
+
+    fun setCash(cash: Boolean) {
+        this.cash = cash
     }
 
 }
