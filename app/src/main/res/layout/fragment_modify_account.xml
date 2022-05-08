@@ -1,81 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/margin_main_container"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tvFragAcctTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bancolombia"
+        style="@style/Activity.Title"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        app:layout_constraintEnd_toStartOf="@id/glFragAcctEnd"
+        app:layout_constraintStart_toEndOf="@id/glFragAcctStart"
+        app:layout_constraintTop_toBottomOf="@id/glFragAcctTop"
+        tools:text="Bancolombia" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/llFragAcctBalance"
+        style="@style/Form.Field"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        app:layout_constraintEnd_toStartOf="@id/glFragAcctEnd"
+        app:layout_constraintStart_toEndOf="@id/glFragAcctStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvFragAcctTitle">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Balance:"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            style="@style/Form.Label"
+            android:text="@string/fragmodacc_text_labelbalance" />
 
         <EditText
             android:id="@+id/etFragAcctBalance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
+            style="@style/Form.Input"
+            android:hint="@string/fragmodacc_hint_balance"
             android:imeOptions="actionNext"
-            android:textSize="22sp" />
+            android:inputType="numberDecimal" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/llFragAcctDesc"
+        style="@style/Form.Field"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        app:layout_constraintEnd_toStartOf="@id/glFragAcctEnd"
+        app:layout_constraintStart_toEndOf="@id/glFragAcctStart"
+        app:layout_constraintTop_toBottomOf="@+id/llFragAcctBalance">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descripcion:"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            style="@style/Form.Label"
+            android:text="@string/fragmodacc_text_labeldesc" />
 
         <EditText
             android:id="@+id/etFragAcctDescr"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
+            style="@style/Form.Input"
+            android:hint="@string/fragmodacc_hint_desc"
             android:imeOptions="actionDone"
-            android:textSize="22sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llAddSource4"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
-
-
-        <CheckBox
-            android:id="@+id/cbFragAcctCash"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            style="@style/NewTransaction.label"
-            android:labelFor="@id/cbNewTranscIsPending"
-            android:text="Dinero facilmente convertible en efectivo" />
+            android:inputType="textMultiLine" />
 
     </LinearLayout>
 
-</LinearLayout>
+    <CheckBox
+        android:id="@+id/cbFragAcctCash"
+        style="@style/Form.CheckBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/fragmodacc_text_cbcash"
+        app:layout_constraintEnd_toStartOf="@id/glFragAcctEnd"
+        app:layout_constraintStart_toEndOf="@id/glFragAcctStart"
+        app:layout_constraintTop_toBottomOf="@id/llFragAcctDesc" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glFragAcctStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glFragAcctEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glFragAcctTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glFragAcctBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

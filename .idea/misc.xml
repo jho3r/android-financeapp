@@ -7,14 +7,14 @@
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/drawable/icon_config.xml" value="0.2005" />
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/drawable/icon_list.xml" value="0.2165" />
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/drawable/icon_warning.xml" value="0.2165" />
-        <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_add_source.xml" value="0.2" />
+        <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_add_source.xml" value="0.33" />
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_config.xml" value="0.33" />
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_dashboard.xml" value="0.22" />
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_new_transaction.xml" value="0.25" />
-        <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_signup.xml" value="0.1718683197947841" />
-        <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_sources.xml" value="0.1" />
+        <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_signup.xml" value="0.33" />
+        <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/activity_sources.xml" value="0.18" />
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/card.xml" value="0.67" />
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/fragment_modify_account.xml" value="0.22" />
         <entry key="..\:/Users/jhoer/Desktop/Projects/CInnoP/Mobile/jho3r/FinanceApp/app/src/main/res/layout/source_row.xml" value="0.25" />
@@ -22,4 +22,5 @@
       </map>
     </option>
   </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

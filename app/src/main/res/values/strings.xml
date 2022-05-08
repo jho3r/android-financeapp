@@ -1,18 +1,20 @@
 <resources>
     <string name="app_name">FinanceApp</string>
-    <string name="main_label_available">Disponible en caja:</string>
-    <string name="main_available">36\'000.000</string>
-    <string name="main_contdescrp_fab">Añadir transacción</string>
-    <string name="main_contdescr_pending">Pendientes</string>
-    <string name="main_text_pending">Pendientes</string>
-    <string name="main_contdescrp_details">Detalles de transacciones</string>
-    <string name="main_text_details">Ver detalle</string>
+    <string name="shared_preferences_name">sp_authetication</string>
 
     <string name="menu_action_config">Configurar fuentes</string>
 
-    <string name="config_title">Fuentes</string>
+    <string name="dash_label_available">Disponible en caja:</string>
+    <string name="dash_available">36\'000.000</string>
+    <string name="dash_contdescrp_fab">Añadir transacción</string>
+    <string name="dash_contdescr_pending">Pendientes</string>
+    <string name="dash_text_pending">Pendientes</string>
+    <string name="dash_contdescrp_details">Detalles de transacciones</string>
+    <string name="dash_text_details">Ver detalle</string>
+    <string name="dashboard_text_cash">$ %1$s</string>
 
-    <string name="addsource_title">Nueva Fuente</string>
+    <string name="config_title">Fuentes</string>
+    <string name="sources_contdesc_fab">add source</string>
 
     <string name="newtransc_title">Nueva Transacción</string>
     <string name="newtransc_text_concept">Concepto:</string>
@@ -23,17 +25,52 @@
     <string name="newtransc_text_source">Fuente:</string>
     <string name="newtransc_contdescr_fab">Save transaction</string>
     <string name="newtransc_text_ispending">Marcar transaccion como pendiente de resolucion</string>
-
-    <string name="dashboard_text_cash">$ %1$s</string>
-
-    <string name="login_title">Inicia Sesion</string>
-
-    <string name="signup_title">Registrate</string>
-
+    <string name="newtransc_hint_concept">Memoria ram para PC de mesa</string>
+    <string name="newtransc_hint_balance">3\'000.00</string>
+    <string name="newtransc_hint_category">Trabajo</string>
     <string-array name="newtransc_array_type">
         <item>Transferencia</item>
         <item>Gasto</item>
         <item>Ingreso</item>
     </string-array>
+
+    <string name="signup_title">Registrate</string>
+    <string name="signup_text_title">Bienvenido a FinanceApp</string>
+    <string name="signup_text_subtitle">Por favor ingresa tus datos</string>
+    <string name="signup_text_labelname">Usuario:</string>
+    <string name="signup_hint_name">elpepe</string>
+    <string name="signup_text_labelemail">Email:</string>
+    <string name="signup_hint_email">elpepe@gmail.com</string>
+    <string name="signup_text_labelpass">Contraseña:</string>
+    <string name="signup_hint_pass">************</string>
+    <string name="signup_text_btnregister">REGISTRATE</string>
+
+    <string name="addsource_title">Nueva Fuente</string>
+    <string name="addsource_text_title">Genial, una nueva cuenta!</string>
+    <string name="addsource_text_subtitle">No pongas cryptos ni inversiones, solo cuentas bancarias o ahorros que puedas convertir facilmente en efectivo.</string>
+    <string name="addsource_text_labelname">Nombre de la cuenta:</string>
+    <string name="addsource_hint_name">Bancolombia</string>
+    <string name="addsource_text_labelbalance">Balance:</string>
+    <string name="addsource_hint_balance">1\'000.000</string>
+    <string name="addsource_text_labeldescr">Descripcion:</string>
+    <string name="addsource_hint_descr">Cuenta de nomina</string>
+    <string name="addsource_text_btnsave">GUARDAR</string>
+
+    <string name="login_title">Inicia Sesion</string>
+    <string name="login_text_btnlogin">INICIAR SESION</string>
+    <string name="login_text_title">Hola de nuevo!</string>
+    <string name="login_text_cbremember">Mantener sesion iniciada</string>
+
+    <string name="main_text_btnlogin">INICIAR SESION</string>
+    <string name="main_text_btnsignup">REGISTRATE</string>
+    <string name="main_text_title">Bienvenido a FinanceApp</string>
+    <string name="main_contdesc_logo">Logo</string>
+    <string name="main_text_imgtitle">FinanceApp</string>
+
+    <string name="fragmodacc_hint_desc">Cuenta de nomina</string>
+    <string name="fragmodacc_hint_balance">20.000</string>
+    <string name="fragmodacc_text_labelbalance">Balance:</string>
+    <string name="fragmodacc_text_labeldesc">Descripcion:</string>
+    <string name="fragmodacc_text_cbcash">Dinero facilmente convertible en efectivo</string>
 
 </resources>

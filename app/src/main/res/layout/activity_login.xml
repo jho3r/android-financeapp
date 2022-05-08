@@ -1,42 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/margin_main_container"
     tools:context=".ui.activity.LoginActivity">
 
     <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        />
-
-    <EditText
-        android:id="@+id/etLoginEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="pepe@gmail.com"/>
+        android:id="@+id/tvLoginTitle"
+        style="@style/Activity.Title"
+        android:text="@string/login_text_title"
+        app:layout_constraintEnd_toEndOf="@id/glLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/glLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/glLoginTop" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        />
+        android:id="@+id/tvLoginSubtitle"
+        style="@style/Activity.Subtitle"
+        android:text="@string/signup_text_subtitle"
+        app:layout_constraintEnd_toEndOf="@id/glLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/glLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/tvLoginTitle" />
 
-    <EditText
-        android:id="@+id/etLoginPassword"
-        android:layout_width="match_parent"
+
+    <LinearLayout
+        android:id="@+id/llLoginEmail"
+        style="@style/Form.Field"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="******"/>
+        app:layout_constraintEnd_toEndOf="@id/glLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/glLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/glLoginSep1">
+
+        <TextView
+            style="@style/Form.Label"
+            android:text="@string/signup_text_labelemail" />
+
+        <EditText
+            android:id="@+id/etLoginEmail"
+            style="@style/Form.Input"
+            android:imeOptions="actionNext"
+            android:autofillHints="emailAddress"
+            android:hint="@string/signup_hint_email"
+            android:inputType="textEmailAddress" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llLoginPass"
+        style="@style/Form.Field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/glLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/glLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/llLoginEmail">
+
+        <TextView
+            style="@style/Form.Label"
+            android:text="@string/signup_text_labelpass" />
+
+        <EditText
+            android:id="@+id/etLoginPassword"
+            style="@style/Form.Input"
+            android:imeOptions="actionDone"
+            android:autofillHints="password"
+            android:hint="@string/signup_hint_pass"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/cbLoginRemember"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Form.CheckBox"
+        android:text="@string/login_text_cbremember"
+        app:layout_constraintTop_toBottomOf="@id/llLoginPass"
+        app:layout_constraintStart_toEndOf="@id/glLoginStart"
+        app:layout_constraintEnd_toStartOf="@id/glLoginEnd"/>
 
     <Button
         android:id="@+id/btnLoginLogin"
-        android:layout_width="match_parent"
+        style="@style/Form.Button"
+        android:text="@string/login_text_btnlogin"
+        app:layout_constraintBottom_toBottomOf="@id/glLoginBottom"
+        app:layout_constraintEnd_toStartOf="@id/glLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/glLoginStart" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glLoginStart"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        />
-</LinearLayout>
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glLoginEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glLoginTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glLoginBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glLoginSep1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -27,8 +28,7 @@ class AddSourceActivity : AppCompatActivity(), OnClickListener {
 
     private lateinit var userId: String
 
-    private lateinit var fabAddSourceSave: FloatingActionButton
-    private lateinit var cbAddSourceCash: CheckBox
+    private lateinit var btnAddSourceSave: Button
     private lateinit var etAddSourceDescription: EditText
     private lateinit var etAddSourceBalance: EditText
     private lateinit var etAddSourceName: EditText
@@ -45,13 +45,12 @@ class AddSourceActivity : AppCompatActivity(), OnClickListener {
         // change title bar
         supportActionBar?.title = getString(R.string.addsource_title)
 
-        cbAddSourceCash = findViewById(R.id.cbAddSourceCash)
         etAddSourceDescription = findViewById(R.id.etAddSourceDescription)
         etAddSourceBalance = findViewById(R.id.etAddSourceBalance)
         etAddSourceName = findViewById(R.id.etAddSourceName)
-        fabAddSourceSave = findViewById(R.id.fabAddSourceSave)
+        btnAddSourceSave = findViewById(R.id.btnAddSourceSave)
 
-        fabAddSourceSave.setOnClickListener(this)
+        btnAddSourceSave.setOnClickListener(this)
 
         firestoreService = FirestoreService(Firebase.firestore)
         messagesHandler = UserMessagesHandler(this)
@@ -59,7 +58,7 @@ class AddSourceActivity : AppCompatActivity(), OnClickListener {
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
-            R.id.fabAddSourceSave -> validateAccount(p0)
+            R.id.btnAddSourceSave -> validateAccount(p0)
         }
     }
 
@@ -87,15 +86,13 @@ class AddSourceActivity : AppCompatActivity(), OnClickListener {
             return
         }
 
-        val sourceCash = cbAddSourceCash.isChecked
         val sourceId = sourceName.lowercase().replace(" ", "-")
 
         val source = Account(
             id = sourceId,
             name = sourceName,
             balance = sourceBalance,
-            description = sourceDescription,
-            cash = sourceCash
+            description = sourceDescription
         )
 
         firestoreService.getSources(

@@ -134,6 +134,7 @@ class SourcesActivity : AppCompatActivity(), OnClickListener {
             account = account,
             callback = object : Callback<Void> {
                 override fun onSuccess(response: Void?) {
+                    tryGetData()
                     messagesHandler
                         .showToastSuccessMessage("Cuenta actualizada")
                 }
@@ -142,8 +143,6 @@ class SourcesActivity : AppCompatActivity(), OnClickListener {
                     messagesHandler
                         .showToastErrorMessage(exception.message?:"Error actualizando cuenta", null)
                 }
-
-
             }
         )
     }

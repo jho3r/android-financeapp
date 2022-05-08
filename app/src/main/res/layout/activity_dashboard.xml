@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin_main_container"
     tools:context=".ui.activity.DashboardActivity">
 
 
     <LinearLayout
         android:id="@+id/llDashboardHeader"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/glDashTop"
+        app:layout_constraintStart_toEndOf="@id/glDashStart"
+        app:layout_constraintEnd_toStartOf="@id/glDashEnd">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/main_label_available"
+            android:text="@string/dash_label_available"
             android:textSize="@dimen/tsize_main_labels" />
 
         <TextView
@@ -27,17 +28,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margint_main_values"
             android:gravity="center"
-            tools:text="@string/main_available"
             android:textSize="@dimen/ts_main_values"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="@string/dash_available" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llDashboardBody"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/llDashboardHeader"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/llDashboardHeader"
+        app:layout_constraintStart_toEndOf="@id/glDashStart"
+        app:layout_constraintEnd_toStartOf="@id/glDashEnd"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
@@ -46,8 +50,8 @@
 
             <TextView
                 style="@style/Main.CardContent"
-                android:contentDescription="@string/main_contdescrp_details"
-                android:text="@string/main_text_details"
+                android:contentDescription="@string/dash_contdescrp_details"
+                android:text="@string/dash_text_details"
                 app:drawableBottomCompat="@drawable/icon_list" />
 
         </androidx.cardview.widget.CardView>
@@ -58,8 +62,8 @@
 
             <TextView
                 style="@style/Main.CardContent"
-                android:contentDescription="@string/main_contdescr_pending"
-                android:text="@string/main_text_pending"
+                android:contentDescription="@string/dash_contdescr_pending"
+                android:text="@string/dash_text_pending"
                 app:drawableBottomCompat="@drawable/icon_warning" />
 
         </androidx.cardview.widget.CardView>
@@ -68,11 +72,38 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabDashboard"
+        style="@style/Activity.Fab"
+        android:contentDescription="@string/dash_contdescrp_fab"
+        android:src="@drawable/icon_add"
+        app:layout_constraintEnd_toStartOf="@id/glDashEnd"
+        app:layout_constraintBottom_toTopOf="@id/glDashBottom"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glDashStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:contentDescription="@string/main_contdescrp_fab"
-        android:src="@drawable/icon_add" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
 
-</RelativeLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glDashEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glDashTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glDashBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

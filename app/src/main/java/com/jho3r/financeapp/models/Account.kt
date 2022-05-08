@@ -5,7 +5,7 @@ class Account(
     private var name: String,
     private var balance: String,
     var currency: String = "COP",
-    private var cash: Boolean,
+    private var cash: Boolean = true,
     private var description : String
 ) {
     constructor() : this("", "", "", "", false, "")

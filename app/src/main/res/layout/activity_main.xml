@@ -4,27 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin_main_container"
+    android:background="@color/secondary_variant"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/glMainTop"
+        app:layout_constraintBottom_toTopOf="@id/btnMainLogin"
+        app:layout_constraintEnd_toStartOf="@id/glMainEnd"
+        app:layout_constraintStart_toEndOf="@id/glMainStart">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="160dp"
+            android:src="@drawable/budget"
+            android:contentDescription="@string/main_contdesc_logo"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_text_imgtitle"
+            android:textSize="28sp"
+            android:textColor="@color/on_secondary"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnMainLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LOGIN"
+        style="@style/Form.Button"
+        android:text="@string/main_text_btnlogin"
         app:layout_constraintBottom_toTopOf="@id/btnMainSignup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintEnd_toEndOf="@id/glMainEnd"
+        app:layout_constraintStart_toStartOf="@id/glMainStart" />
 
     <Button
         android:id="@+id/btnMainSignup"
-        android:layout_width="match_parent"
+        style="@style/Form.Button"
+        android:text="@string/main_text_btnsignup"
+        app:layout_constraintBottom_toBottomOf="@id/glMainBottom"
+        app:layout_constraintEnd_toEndOf="@id/glMainEnd"
+        app:layout_constraintStart_toStartOf="@id/glMainStart" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glMainStart"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN UP"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnMainLogin"/>
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glMainEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glMainTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glMainBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,52 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/margin_main_container"
     tools:context=".ui.activity.SignupActivity">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Username:"/>
-
-    <EditText
-        android:id="@+id/etSignupUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="pepito"/>
+        android:id="@+id/tvSignupTitle"
+        style="@style/Activity.Title"
+        android:text="@string/signup_text_title"
+        app:layout_constraintEnd_toEndOf="@id/glSignupEnd"
+        app:layout_constraintStart_toStartOf="@id/glSignupStart"
+        app:layout_constraintTop_toBottomOf="@id/glSignupTop" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email:"/>
+        android:id="@+id/tvSignupSubtitle"
+        style="@style/Activity.Subtitle"
+        android:text="@string/signup_text_subtitle"
+        app:layout_constraintEnd_toEndOf="@id/glSignupEnd"
+        app:layout_constraintStart_toStartOf="@id/glSignupStart"
+        app:layout_constraintTop_toBottomOf="@id/tvSignupTitle" />
 
-    <EditText
-        android:id="@+id/etSignupEmail"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/llSignupName"
+        style="@style/Form.Field"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="pepito@gmail.com"/>
+        app:layout_constraintEnd_toEndOf="@id/glSignupEnd"
+        app:layout_constraintStart_toStartOf="@id/glSignupStart"
+        app:layout_constraintTop_toBottomOf="@id/glSignupSep1">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Password:"/>
+        <TextView
+            style="@style/Form.Label"
+            android:text="@string/signup_text_labelname" />
 
-    <EditText
-        android:id="@+id/etSignupPassword"
-        android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/etSignupUsername"
+            style="@style/Form.Input"
+            android:imeOptions="actionNext"
+            android:autofillHints="username"
+            android:hint="@string/signup_hint_name"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSignupEmail"
+        style="@style/Form.Field"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="******"
-        android:inputType="textPassword"/>
+        app:layout_constraintEnd_toEndOf="@id/glSignupEnd"
+        app:layout_constraintStart_toStartOf="@id/glSignupStart"
+        app:layout_constraintTop_toBottomOf="@id/llSignupName">
+
+        <TextView
+            style="@style/Form.Label"
+            android:text="@string/signup_text_labelemail" />
+
+        <EditText
+            android:id="@+id/etSignupEmail"
+            style="@style/Form.Input"
+            android:imeOptions="actionNext"
+            android:autofillHints="emailAddress"
+            android:hint="@string/signup_hint_email"
+            android:inputType="textEmailAddress" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSignupPass"
+        style="@style/Form.Field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/glSignupEnd"
+        app:layout_constraintStart_toStartOf="@id/glSignupStart"
+        app:layout_constraintTop_toBottomOf="@id/llSignupEmail">
+
+        <TextView
+            style="@style/Form.Label"
+            android:text="@string/signup_text_labelpass" />
+
+        <EditText
+            android:id="@+id/etSignupPassword"
+            style="@style/Form.Input"
+            android:imeOptions="actionDone"
+            android:autofillHints="password"
+            android:hint="@string/signup_hint_pass"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSignup"
-        android:layout_width="match_parent"
+        style="@style/Form.Button"
+        android:text="@string/signup_text_btnregister"
+        app:layout_constraintBottom_toBottomOf="@id/glSignupBottom"
+        app:layout_constraintEnd_toStartOf="@id/glSignupEnd"
+        app:layout_constraintStart_toStartOf="@id/glSignupStart" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glSignupStart"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN UP"/>
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glSignupEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glSignupTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glSignupBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glSignupSep1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

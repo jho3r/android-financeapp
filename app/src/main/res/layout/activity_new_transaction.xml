@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin_main_container"
     tools:context=".ui.activity.NewTransactionActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/glNewTranscBottom"
+        app:layout_constraintEnd_toStartOf="@id/glNewTranscEnd"
+        app:layout_constraintStart_toEndOf="@id/glNewTranscStart"
+        app:layout_constraintTop_toBottomOf="@id/glNewTranscTop">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,73 +20,68 @@
             android:orientation="vertical">
 
             <LinearLayout
+                style="@style/Form.Field"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/NewTransaction.label"
-                    android:labelFor="@id/etNewTranscConcept"
+                    style="@style/Form.Label"
                     android:text="@string/newtransc_text_concept" />
 
                 <EditText
                     android:id="@+id/etNewTranscConcept"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/Form.Input"
                     android:imeOptions="actionNext"
                     android:inputType="text"
-                    android:textSize="@dimen/tsize_newtransc_value" />
+                    android:hint="@string/newtransc_hint_concept"/>
 
             </LinearLayout>
 
             <LinearLayout
+                style="@style/Form.Field"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/NewTransaction.label"
-                    android:labelFor="@id/etNewTranscConcept"
+                    style="@style/Form.Label"
                     android:text="@string/newtransc_text_amount" />
 
                 <EditText
                     android:id="@+id/etNewTranscAmount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/Form.Input"
+                    android:hint="@string/newtransc_hint_balance"
                     android:imeOptions="actionNext"
-                    android:inputType="numberDecimal"
-                    android:textSize="@dimen/tsize_newtransc_value" />
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
             <LinearLayout
-                style="@style/NewTransaction.div"
-                android:orientation="vertical">
+                style="@style/Form.Field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/NewTransaction.label"
-                    android:labelFor="@id/actvNewTranscCategory"
+                    style="@style/Form.Label"
                     android:text="@string/newtransc_text_category" />
 
                 <AutoCompleteTextView
                     android:id="@+id/actvNewTranscCategory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/Form.Input"
                     android:completionThreshold="0"
+                    android:hint="@string/newtransc_hint_category"
                     android:imeOptions="actionDone"
                     android:inputType="text"
-                    android:maxLines="1"
-                    android:textSize="@dimen/tsize_newtransc_value" />
+                    android:maxLines="1" />
 
             </LinearLayout>
 
             <LinearLayout
-                style="@style/NewTransaction.div"
-                android:orientation="vertical">
+                style="@style/Form.Field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/NewTransaction.label"
-                    android:labelFor="@id/spNewTranscType"
+                    style="@style/Form.Label"
                     android:text="@string/newtransc_text_type" />
 
                 <Spinner
@@ -95,12 +94,12 @@
 
             <LinearLayout
                 android:id="@+id/llNewTranscSource"
-                style="@style/NewTransaction.div"
-                android:orientation="vertical">
+                style="@style/Form.Field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/NewTransaction.label"
-                    android:labelFor="@id/spNewTranscSource"
+                    style="@style/Form.Label"
                     android:text="@string/newtransc_text_source" />
 
                 <Spinner
@@ -113,12 +112,12 @@
 
             <LinearLayout
                 android:id="@+id/llNewTranscDestination"
-                style="@style/NewTransaction.div"
-                android:orientation="vertical">
+                style="@style/Form.Field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/NewTransaction.label"
-                    android:labelFor="@id/spNewTranscDestination"
+                    style="@style/Form.Label"
                     android:text="@string/newtransc_text_destination" />
 
                 <Spinner
@@ -129,23 +128,12 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                style="@style/NewTransaction.div"
-                android:layout_height="60dp"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cbNewTranscIsPending"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    style="@style/NewTransaction.label"
-                    android:labelFor="@id/cbNewTranscIsPending"
-                    android:text="@string/newtransc_text_ispending" />
-
-            </LinearLayout>
-
+            <CheckBox
+                android:id="@+id/cbNewTranscIsPending"
+                style="@style/Form.CheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/newtransc_text_ispending" />
 
         </LinearLayout>
 
@@ -153,11 +141,39 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabNewTransc"
+        style="@style/Activity.Fab"
+        android:contentDescription="@string/newtransc_contdescr_fab"
+        android:src="@drawable/icon_save"
+        app:layout_constraintBottom_toTopOf="@id/glNewTranscBottom"
+        app:layout_constraintEnd_toStartOf="@id/glNewTranscEnd" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glNewTranscStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:contentDescription="@string/newtransc_contdescr_fab"
-        android:src="@drawable/icon_save" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
 
-</RelativeLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glNewTranscEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glNewTranscTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/margin_main_container" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glNewTranscBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/margin_main_container" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
