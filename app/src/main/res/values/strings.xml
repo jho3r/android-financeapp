@@ -3,6 +3,7 @@
     <string name="shared_preferences_name">sp_authetication</string>
 
     <string name="menu_action_config">Configurar fuentes</string>
+    <string name="menu_action_exit">Cerrar sesion</string>
 
     <string name="dash_label_available">Disponible en caja:</string>
     <string name="dash_available">36\'000.000</string>
@@ -10,8 +11,14 @@
     <string name="dash_contdescr_pending">Pendientes</string>
     <string name="dash_text_pending">Pendientes</string>
     <string name="dash_contdescrp_details">Detalles de transacciones</string>
+    <string name="dash_contdescrp_graphs">Graficas de transacciones</string>
     <string name="dash_text_details">Ver detalle</string>
+    <string name="dash_text_graphs">Analisis</string>
     <string name="dashboard_text_cash">$ %1$s</string>
+    <string name="dashboard_title_dialogExit">Salir</string>
+    <string name="dashboard_text_dialogExit">¿Está seguro de que desea salir de la aplicación?</string>
+    <string name="dashboard_text_dialogExit_yes">Sí</string>
+    <string name="dashboard_text_dialogExit_no">No</string>
 
     <string name="config_title">Fuentes</string>
     <string name="sources_contdesc_fab">add source</string>
@@ -72,5 +79,6 @@
     <string name="fragmodacc_text_labelbalance">Balance:</string>
     <string name="fragmodacc_text_labeldesc">Descripcion:</string>
     <string name="fragmodacc_text_cbcash">Dinero facilmente convertible en efectivo</string>
+
 
 </resources>

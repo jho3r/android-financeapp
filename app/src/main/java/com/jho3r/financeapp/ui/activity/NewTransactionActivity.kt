@@ -73,8 +73,6 @@ class NewTransactionActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
         tryLoadSpinnersData()
     }
 
-
-
     private fun tryLoadSpinnersData() {
         firestoreService.getUser(
             userId = userId,

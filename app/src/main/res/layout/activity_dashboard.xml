@@ -68,6 +68,18 @@
 
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvDashboardGraphs"
+            style="@style/Main.Card">
+
+            <TextView
+                style="@style/Main.CardContent"
+                android:contentDescription="@string/dash_contdescrp_graphs"
+                android:text="@string/dash_text_graphs"
+                app:drawableBottomCompat="@drawable/icon_graph" />
+
+        </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

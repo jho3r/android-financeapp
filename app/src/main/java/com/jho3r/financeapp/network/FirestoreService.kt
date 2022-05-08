@@ -13,6 +13,7 @@ private const val ACCOUNTS_COLLECTION = "accounts"
 private const val TRANSACTIONS_COLLECTION = "transactions"
 private const val PENDING_TRANSACTIONS_COLLECTION = "pending-transactions"
 private const val HIDDEN_TRANSACTIONS_COLLECTION = "hidden-transactions"
+private const val ANALYTICS_COLLECTION = "analytics"
 private const val TAG = "MyApp.FirestoreServ"
 
 class FirestoreService(private val firebaseFirestore: FirebaseFirestore) {
@@ -71,6 +72,7 @@ class FirestoreService(private val firebaseFirestore: FirebaseFirestore) {
             }
     }
 
+    // Se llama antes de hacer una transaccion para actualizar el balance de una cuenta
     fun updateBalance(amount: Double, userId: String, accountId: String, callback: Callback<Void>) {
         Log.d(TAG, "updateBalance: $amount, $userId, $accountId")
         firebaseFirestore

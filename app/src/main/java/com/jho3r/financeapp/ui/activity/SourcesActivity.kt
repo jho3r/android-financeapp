@@ -134,6 +134,7 @@ class SourcesActivity : AppCompatActivity(), OnClickListener {
             account = account,
             callback = object : Callback<Void> {
                 override fun onSuccess(response: Void?) {
+                    currentResult = Constants.RESULT_DATABASE_CHANGED
                     tryGetData()
                     messagesHandler
                         .showToastSuccessMessage("Cuenta actualizada")
